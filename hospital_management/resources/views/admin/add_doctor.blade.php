@@ -2,6 +2,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        label{
+            width:100px;
+        }
+        input,select{
+            width:300px;
+        }
+    </style>
     @include('admin.css')
 </head>
 <body>
@@ -47,12 +55,55 @@
         <!-- admin body ends-->
 
         <div class="container-fluid page-body-wrapper">
-      <h1>this is doctor</h1>
+
+            <div style="padding-top:100px;" class="container">
+                @if(session()->has('message'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    {{session()->get('message')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                @endif
+
+                <form action="{{url('/upload_doctor')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                     <div style="padding:15px;">
+                         <label>Doctor name</label>
+                         <input type="text" style="color:black;" name="name" placeholder="Enter the  name"/>
+                     </div>
+                    <div style="padding:15px;">
+                        <label>Phone</label>
+                        <input type="number" style="color:black;" name="phone" placeholder="Enter the  phone"/>
+                    </div>
+                    <div style="padding:15px;">
+                        <label>Speciality</label>
+                        <select name="speciality" style="color:black;">
+                            <option>--Select--</option>
+                            <option value="skin">Skin</option>
+                            <option value="heart">Heart</option>
+                            <option value="eye">Eye</option>
+                            <option value="nose">Nose</option>
+                        </select>
+                    </div>
+                    <div style="padding:15px;">
+                        <label>Room No</label>
+                        <input type="text" style="color:black;" name="room" placeholder="Enter room number"/>
+                    </div>
+
+                    <div style="padding:15px;">
+                        <label>Doctor Image</label>
+                        <input type="file"  name="file" />
+                    </div>
+
+                    <div style="padding:15px;">
+                        <input type="submit" class="btn btn-success text-center" name="submit" />
+                    </div>
+
+                </form>
             </div>
-
-
-
-
+            </div>
 
 
         <!-- container-scroller -->

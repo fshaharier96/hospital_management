@@ -28,3 +28,4 @@ Route::middleware([
 });
 
 Route::get('/add_doctor_view',[\App\Http\Controllers\AdminController::class,'addView']);
+Route::post('/upload_doctor',[\App\Http\Controllers\AdminController::class,'upload']);
