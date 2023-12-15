@@ -26,3 +26,5 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+Route::get('/add_doctor_view',[\App\Http\Controllers\AdminController::class,'addView']);
