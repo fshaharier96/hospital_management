@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
 Route::get('/home',[\App\Http\Controllers\HomeController::class,'redirect']);
 Route::post('/appointment',[\App\Http\Controllers\HomeController::class,'appointment']);
+Route::get('/myappointment',[\App\Http\Controllers\HomeController::class,'myappointment']);
+Route::get('/cancel_appointment/{id}',[\App\Http\Controllers\HomeController::class,'cancel_appoint']);
 
 Route::middleware([
     'auth:sanctum',
