@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[\App\Http\Controllers\HomeController::class,'index']);
-Route::get('/home',[\App\Http\Controllers\HomeController::class,'redirect']);
+Route::get('/home',[\App\Http\Controllers\HomeController::class,'redirect'])->middleware('auth','verified');
 Route::post('/appointment',[\App\Http\Controllers\HomeController::class,'appointment']);
 Route::get('/myappointment',[\App\Http\Controllers\HomeController::class,'myappointment']);
 Route::get('/cancel_appointment/{id}',[\App\Http\Controllers\HomeController::class,'cancel_appoint']);
@@ -39,3 +39,5 @@ Route::get('/showdoctor',[\App\Http\Controllers\AdminController::class,'showdoct
 Route::get('/delete_doctor/{id}',[\App\Http\Controllers\AdminController::class,'delete_doctor']);
 Route::get('/update_doctor/{id}',[\App\Http\Controllers\AdminController::class,'update_doctor']);
 Route::post('/edit_doctor/{id}',[\App\Http\Controllers\AdminController::class,'edit_doctor']);
+Route::get('/emailview/{id}',[\App\Http\Controllers\AdminController::class,'emailview']);
+Route::post('/sendemail/{id}',[\App\Http\Controllers\AdminController::class,'sendemail']);

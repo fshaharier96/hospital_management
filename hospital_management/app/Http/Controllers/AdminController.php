@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Notifications\SendEmailNotification;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\App;
 use PhpParser\Comment\Doc;
 
@@ -76,6 +78,23 @@ public function edit_doctor(Request $request,$id){
     $data->save();
     return redirect('/showdoctor');
 
+}
+
+public function emailview($id){
+        $data=Appointment::find($id);
+        return view('admin.emailview',compact('data'));
+}
+public function sendemail(Request $request, $id){
+     $data=Appointment::find($id);
+     $details=[
+      'greeting'=>$request->greeting,
+      'message'=>$request->message,
+      'actiontext'=>$request->actiontext,
+      'actionurl'=>$request->actionurl,
+      'endpart'=>$request->endpart
+     ];
+     Notification::send($data,new SendEmailNotification($details));
+     return redirect()->back();
 }
 
 }

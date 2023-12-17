@@ -68,6 +68,7 @@
               <th>Status</th>
               <th>Approve</th>
               <th>Cancel</th>
+              <th>Send Mail</th>
 
           </tr>
           </thead>
@@ -83,6 +84,7 @@
               <td class="text-white">{{$appoint->status}}</td>
               <td><a class="btn btn-success" href="{{url('/approved',$appoint->id)}}">approve</a></td>
               <td><a class="btn btn-danger" href="{{url('/cancelled',$appoint->id)}}">cancel</a></td>
+              <td><a class="btn btn-danger" href="{{url('/emailview',$appoint->id)}}">Send mail</a></td>
           </tr>
           @endforeach
 
